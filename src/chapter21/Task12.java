@@ -16,12 +16,13 @@ public class Task12 {
     }
 
     public static int counterContain(String[] arr){
-        int count=0, c=0;
+        int count=0, c;
         char s;
-        String str;
+        String str, element;
         for (int i=0; i<arr.length; i++){
-            s = arr[i].charAt(0);
-            str = arr[i].split(" ")[1];
+            element = arr[i].toLowerCase();
+            s = element.charAt(0);
+            str = element.split(" ")[1];
             c = counter(str,s);
             if (c>1)
                 count++;
@@ -30,18 +31,21 @@ public class Task12 {
     }
 
     public static void main(String[] args) {
-        int n=5;
+        //часть1
+        int n=3;
         System.out.print("Введите строковое значение: ");
         String str = in.nextLine();
         System.out.print("Введите символ: ");
-        String temp = in.next();
-        char s = temp.charAt(0);
+        char s = in.next().charAt(0);
         int count = counter(str,s);
         System.out.println("Символ '" + s + "' встречается в строке " + count + " раз");
-        String[] array = new String[n];
-        for (int i=0; i<n; i++){
-            System.out.print("Введите имя и фамилию: ");
-            array[i] = in.nextLine();
+
+
+        //часть 2
+        String[] array = new String[n]; //инициализация массива, содержащего имена и фамилии
+        for (int i=0; i<n; i++){        //заполнение этого массива
+            System.out.print((i+1) + ") Введите имя и фамилию: ");
+            array[i] = in.next() + " " + in.next();
         }
         System.out.println("У " + counterContain(array) + " человек первая буква имени встречается в фамилии более одного раза");
     }
